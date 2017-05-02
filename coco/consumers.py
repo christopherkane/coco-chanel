@@ -18,7 +18,7 @@ def ws_connect(message):
         if prefix != 'chat':
             log.debug('invalid ws path=%s', message['path'])
             return
-        room = Room.objects.get_or_create(label=label)
+        room, created = Room.objects.get_or_create(label=label)
     except ValueError:
         log.debug('invalid ws path=%s', message['path'])
         return
